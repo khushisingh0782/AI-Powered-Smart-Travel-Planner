@@ -1,0 +1,6 @@
+{
+  "name": "AI-Powered Smart Travel Planner",
+  "description": "An intelligent travel planning platform generating personalized itineraries, day-wise activities, INR budget breakdowns, and smart packing checklists.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
