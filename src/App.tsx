@@ -9,10 +9,9 @@ import { HeroSection } from './components/HeroSection';
 import { TripForm } from './components/TripForm';
 import { ItineraryView } from './components/ItineraryView';
 import { SavedTripsModal } from './components/SavedTripsModal';
-import { EseProjectReportModal } from './components/EseProjectReportModal';
 import { TripPreferences, ItineraryResult } from './types/travel';
 import { fetchItineraryPlan, getSavedTrips, saveTrip, deleteSavedTrip } from './services/travelService';
-import { Sparkles, Compass, BookOpen, AlertCircle, ArrowLeft } from 'lucide-react';
+import { AlertCircle, ArrowLeft } from 'lucide-react';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<'home' | 'plan' | 'itinerary'>('home');
@@ -35,7 +34,6 @@ export default function App() {
 
   const [savedTrips, setSavedTrips] = useState<ItineraryResult[]>([]);
   const [isSavedModalOpen, setIsSavedModalOpen] = useState<boolean>(false);
-  const [isReportModalOpen, setIsReportModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     // Load saved trips on mount
@@ -107,7 +105,6 @@ export default function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         onOpenSaved={() => setIsSavedModalOpen(true)}
-        onOpenReport={() => setIsReportModalOpen(true)}
         savedCount={savedTrips.length}
       />
 
@@ -202,19 +199,11 @@ export default function App() {
             </div>
             <span className="font-semibold text-slate-800">AI-Powered Smart Travel Planner</span>
             <span aria-hidden="true">·</span>
-            <span>Tourism & Travel Engineering Prototype</span>
+            <span>Tourism & Travel Platform</span>
           </div>
 
-          <div className="flex items-center gap-4 text-xs">
-            <span>Marwadi University (ESE Project)</span>
-            <span aria-hidden="true">·</span>
-            <button
-              onClick={() => setIsReportModalOpen(true)}
-              className="text-emerald-700 hover:text-emerald-800 font-semibold inline-flex items-center gap-1"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>View ESE Project Report & Prompt-Book</span>
-            </button>
+          <div className="flex items-center gap-4 text-xs text-slate-400">
+            <span>Seamless AI-Assisted Trip Planning</span>
           </div>
         </div>
       </footer>
@@ -226,11 +215,6 @@ export default function App() {
         savedTrips={savedTrips}
         onSelectTrip={handleSelectSavedTrip}
         onDeleteTrip={handleDeleteTrip}
-      />
-
-      <EseProjectReportModal
-        isOpen={isReportModalOpen}
-        onClose={() => setIsReportModalOpen(false)}
       />
     </div>
   );

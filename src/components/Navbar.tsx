@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { Compass, BookOpen, BookmarkCheck, PlusCircle, Menu, X } from 'lucide-react';
+import { Compass, BookmarkCheck, PlusCircle, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onNavigate: (view: 'home' | 'plan' | 'itinerary') => void;
   onOpenSaved: () => void;
-  onOpenReport: () => void;
   savedCount: number;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onNavigate,
   onOpenSaved,
-  onOpenReport,
   savedCount
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -58,13 +56,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {savedCount}
               </span>
             )}
-          </button>
-          <button
-            onClick={onOpenReport}
-            className="flex items-center gap-1.5 hover:text-emerald-700 transition-colors whitespace-nowrap shrink-0 text-emerald-800 font-semibold"
-          >
-            <BookOpen className="w-4 h-4 text-emerald-600" />
-            <span>ESE Report</span>
           </button>
         </nav>
 
@@ -129,16 +120,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {savedCount}
               </span>
             )}
-          </button>
-          <button
-            onClick={() => {
-              onOpenReport();
-              setMobileMenuOpen(false);
-            }}
-            className="w-full text-left py-2 px-3 text-sm font-semibold text-emerald-800 hover:bg-emerald-50 rounded-lg flex items-center gap-2"
-          >
-            <BookOpen className="w-4 h-4 text-emerald-600" />
-            <span>ESE Project Report & Prompt-Book</span>
           </button>
         </div>
       )}
